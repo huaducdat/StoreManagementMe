@@ -10,7 +10,7 @@ class Database
     public function __construct($config, $db_name = null)
     {
         $this->host = $config['host'];
-        $this->username = $config['usename'];
+        $this->username = $config['username'];
         $this->password = $config['password'];
         $this->dbname = $db_name;
     }
