@@ -22,7 +22,7 @@ function generate_hash($pw)
 $result = null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['password'])) {
     $password = $_POST['password'];
-    [$algoName, $hash] = generate_hash($pw);
+    [$algoName, $hash] = generate_hash($password);
     $result = [
         'algo' => $algoName,
         'hash' => $hash,

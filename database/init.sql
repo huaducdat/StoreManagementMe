@@ -23,5 +23,5 @@ CREATE TABLE products (
 
 INSERT INTO users (fullname, email, password, address, birthday)
 VALUES 
-('Admin User', 'admin@example.com', '$2y$10$rTosDHAXAYfP1hrEhsxa1ee8v0XLwjldg9sg72IxyqTdXHEaHzsym', 'Hà Nội', '1990-01-01');
+('Admin User', 'admin@example.com', '$2y$10$/18AHZ0nu/J64YWpadf4Kez5SxsuL/0MKzfWdsLYIjtmPGQprNB5K', 'Hà Nội', '1990-01-01');
 -- password: 123456 

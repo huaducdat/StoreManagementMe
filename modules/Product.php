@@ -41,4 +41,25 @@ class Product
         $stmt = $this->pdo->prepare("DELETE FROM products WHERE id=? AND user_id=?");
         return $stmt->execute([$id, $user_id]);
     }
+    public function getById($id)
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM products WHERE id = ?");
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    public function update($id, $name, $desc, $price)
+    {
+        $stmt = $this->pdo->prepare("
+        UPDATE products 
+        SET name = :name, description = :description, price = :price, updated_at = NOW() WHERE id = :id
+        ");
+        return $stmt->execute(
+            [
+                'name' => $name,
+                'description' => $desc,
+                'price' => $price,
+                'id' => $id
+            ]
+        );
+    }
 }
