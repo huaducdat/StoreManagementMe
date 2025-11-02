@@ -9,14 +9,16 @@ $db = new Database($config, 'db_products');
 $pdo = $db->connect();
 $userModel = new User($pdo);
 
-if($_SERVER['REQUEST_METHOD']==='POST'){
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = trim($_POST['email'] ?? '');
+    $password = $_POST['password'] ?? '';
+
     $user = $userModel->login($_POST['email'], $_POST['password']);
-    if($user)
-    {
+    if ($user) {
         $_SESSION['user'] = $user;
         header('Location: product.php');
         exit;
-    } else{
+    } else {
         $error = "Password incorrect!";
     }
 }
@@ -25,7 +27,8 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
     <h2>Login</h2>
     <?= isset($error) ? "<p style='color:red'>$error</p>" : '' ?><br><br>
     <input type="email" name="email" placeholder="Email" required><br><br>
-    <input type="password" name="password" placeholder="Password" required><br><br><hr>
+    <input type="password" name="password" placeholder="Password" required><br><br>
+    <hr>
     <button type="submit">Login</button>
 </form>
 <p>Do not have an account? <a href="signin.php">Sign up now</a></p>
